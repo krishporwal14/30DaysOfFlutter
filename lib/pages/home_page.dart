@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, unnecessary_null_comparison
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -13,8 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final dummyList = List.generate(20, (index) => CatalogModel.items[0]);
-
   final int days = 30;
 
   final String name = "Krish";
@@ -26,9 +24,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    await Future.delayed(Duration(seconds: 2));
     final catalogJson = await rootBundle.loadString("files/catalog.json");
     final decodedData = jsonDecode(catalogJson);
     var productsData = decodedData["products"];
+    CatalogModel.items =
+        List.from(productsData).map((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
@@ -38,14 +40,18 @@ class _HomePageState extends State<HomePage> {
         title: Text("Catalog App"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: dummyList.length,
+        padding: const EdgeInsets.all(16.0),
+        child:(CatalogModel.items != null && CatalogModel.items.isNotEmpty) 
+        ? ListView.builder(
+          itemCount: CatalogModel.items.length,
           itemBuilder: (context, index) {
             return ItemWidget(
-              item: dummyList[index],
+              item: CatalogModel.items[index],
             );
           },
+        )
+        : Center(
+          child: CircularProgressIndicator()
         ),
       ),
       drawer: MyDrawer(),
