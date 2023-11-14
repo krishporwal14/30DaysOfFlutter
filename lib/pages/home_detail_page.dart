@@ -14,7 +14,9 @@ class HomeDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyTheme.creamColor,
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
       bottomNavigationBar: Container(
         color: Colors.white,
         child: ButtonBar(
@@ -28,8 +30,8 @@ class HomeDetailPage extends StatelessWidget {
                 shape: MaterialStateProperty.all(StadiumBorder())
               ),
               onPressed: () {}, 
-              child: "Buy".text.make(),
-            ).wh(100, 50),
+              child: "Add to Cart".text.make(),
+            ).wh(120, 50),
           ],
         ).p32(),
       ),
@@ -40,7 +42,7 @@ class HomeDetailPage extends StatelessWidget {
             Hero(
               tag: Key(catalog.id.toString()),
               child: Image.network(catalog.image)
-            ).h32(context),
+            ).h24(context),
             Expanded(
               child: VxArc(
                 height: 30.0,
@@ -54,8 +56,9 @@ class HomeDetailPage extends StatelessWidget {
                       catalog.name.text.bold.xl4.color(MyTheme.darkBlueishColor).make(),
                       catalog.desc.text.xl.textStyle(context.captionStyle).make(),
                       10.heightBox,
+                      "Ea est ipsum voluptua dolor lorem dolores, rebum nonumy ipsum ut sit. No et takimata ea duo, sit labore et ipsum sit sed labore et nonumy. Amet justo ipsum magna at kasd et ut. Accusam ipsum amet invidunt takimata dolore vero. Vero amet ipsum sed gubergren ipsum et, amet kasd.".text.textStyle(context.captionStyle).make().p16(),
                     ]
-                  ).p64(),
+                  ).p32(),
                 ),
               ),
             ),

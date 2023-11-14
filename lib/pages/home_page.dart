@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, avoid_print, unnecessary_null_comparison, sort_child_properties_last, avoid_unnecessary_containers
 
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:test/models/catalog.dart';
+import 'package:test/utils/routes.dart';
 import 'package:test/widgets/home_widgets/catalog_header.dart';
 import 'package:test/widgets/home_widgets/catalog_list.dart';
 import 'package:test/utils/themes.dart';
@@ -35,6 +37,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MyTheme.creamColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          backgroundColor: MyTheme.darkBlueishColor,
+          child: Icon(CupertinoIcons.cart),
+        ),
         body: SafeArea(
           child: Container(
             padding: Vx.m32,
