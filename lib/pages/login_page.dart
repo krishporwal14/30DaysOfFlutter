@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:test/utils/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -30,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
     return Form(
       key: _formKey,
       child: Material(
-        color: Colors.white,
+        color: context.canvasColor,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -97,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                 borderRadius: changeButton
                     ? BorderRadius.circular(50)
                     : BorderRadius.circular(8),
-                color: Colors.deepPurple,
+                color: context.theme.highlightColor,
                 child: InkWell(
                   onTap: () => moveToInitialRoute(context),
                   child: AnimatedContainer(

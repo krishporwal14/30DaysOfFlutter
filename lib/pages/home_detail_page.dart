@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:test/models/catalog.dart';
-import 'package:test/utils/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -13,12 +12,12 @@ class HomeDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -26,7 +25,7 @@ class HomeDetailPage extends StatelessWidget {
             "\$${catalog.price}".text.bold.xl4.red800.make(),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(MyTheme.darkBlueishColor),
+                backgroundColor: MaterialStateProperty.all(context.theme.highlightColor),
                 shape: MaterialStateProperty.all(StadiumBorder())
               ),
               onPressed: () {}, 
@@ -50,10 +49,10 @@ class HomeDetailPage extends StatelessWidget {
                 edge: VxEdge.top,
                 child: Container(
                   width: context.screenWidth,
-                  color: Colors.white,
+                  color: context.cardColor,
                   child: Column(
                     children: [
-                      catalog.name.text.bold.xl4.color(MyTheme.darkBlueishColor).make(),
+                      catalog.name.text.bold.xl4.color(context.theme.colorScheme.secondary).make(),
                       catalog.desc.text.xl.textStyle(context.captionStyle).make(),
                       10.heightBox,
                       "Ea est ipsum voluptua dolor lorem dolores, rebum nonumy ipsum ut sit. No et takimata ea duo, sit labore et ipsum sit sed labore et nonumy. Amet justo ipsum magna at kasd et ut. Accusam ipsum amet invidunt takimata dolore vero. Vero amet ipsum sed gubergren ipsum et, amet kasd.".text.textStyle(context.captionStyle).make().p16(),
