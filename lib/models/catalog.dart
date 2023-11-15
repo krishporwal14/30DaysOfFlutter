@@ -1,6 +1,11 @@
 // ignore_for_file: null_closures
 
 class CatalogModel {
+
+  static final catalogModel = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => catalogModel;
+
   static List<Item> items = [];
 
   //Get item by id
