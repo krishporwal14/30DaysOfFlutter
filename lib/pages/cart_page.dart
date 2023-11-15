@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, no_leading_underscores_for_local_identifiers
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, no_leading_underscores_for_local_identifiers, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:test/models/cart.dart';
@@ -53,12 +53,7 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatefulWidget {
-  @override
-  State<_CartList> createState() => _CartListState();
-}
-
-class _CartListState extends State<_CartList> {
+class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _cart = CartModel();
@@ -72,7 +67,7 @@ class _CartListState extends State<_CartList> {
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () {
                   _cart.remove(_cart.items[index]);
-                  setState(() {});
+                  // setState(() {});
                 },
               ),
               title: _cart.items[index].name.text.make(),

@@ -3,9 +3,6 @@
 import 'package:test/models/catalog.dart';
 
 class CartModel {
-  static final cartModel = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModel;
 
   // Catalog field
   late CatalogModel _catalog;
